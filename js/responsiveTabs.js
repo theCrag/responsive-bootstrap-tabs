@@ -7,7 +7,6 @@ Version: 1.10
 var RESPONSIVEUI = {};
 
 (function($) {
-
 	RESPONSIVEUI.responsiveTabs = function () {
 		var $tabSets = $('.responsive-tabs');
 
@@ -52,7 +51,7 @@ var RESPONSIVEUI = {};
 				});
 
 				//create the tab list
-				var $tabList = $('<ul/>', { 'class': 'responsive-tabs__list', 'role': 'tablist' });
+				var $tabList = $('<ul/>', { 'class': 'responsive-tabs__list nav nav-tabs', 'role': 'tablist' });
 
 				//loop through each heading in set
 				var tabcount = 1;
@@ -72,7 +71,6 @@ var RESPONSIVEUI = {};
 						'aria-controls': 'tablist' + tablistcount +'-panel' + tabcount,
 						'role': 'tab',
 						tabindex: 0,
-						text: $tabHeading.text(),
 						keydown: function (objEvent) {
 							if (objEvent.keyCode === 13) { // if user presses 'enter'
 								$tabListItem.click();
@@ -97,15 +95,16 @@ var RESPONSIVEUI = {};
 							$tabHeading.addClass('responsive-tabs__heading--active');
 
 							//remove active state from currently active tab list item
-							$tabList.find('.responsive-tabs__list__item--active').removeClass('responsive-tabs__list__item--active');
+							$tabList.find('.responsive-tabs__list__item--active').removeClass('responsive-tabs__list__item--active active');
 
 							//make this tab active
-							$tabListItem.addClass('responsive-tabs__list__item--active');
+							$tabListItem.addClass('responsive-tabs__list__item--active active');
 
 							//reset height of tab panels to auto
 							$tabsWrapper.css('height', 'auto');
 						}
 					});
+					$('<a>').text( $tabHeading.text() ).appendTo( $tabListItem );
 					
 					//associate tab panel with tab list item
 					$tabPanel.attr({
@@ -116,7 +115,7 @@ var RESPONSIVEUI = {};
 
 					// if this is the active panel then make it the active tab item
 					if($tabPanel.hasClass('responsive-tabs__panel--active')) {
-						$tabListItem.addClass('responsive-tabs__list__item--active');
+						$tabListItem.addClass('responsive-tabs__list__item--active active');
 					}
 
 					// add tab item
@@ -132,8 +131,7 @@ var RESPONSIVEUI = {};
 					});
 
 					//toggle tab panel if click heading (on mobile)
-					$tabHeading.click(function() {
-
+					$tabHeading.click(function(e) {
 						// remove any hidden mobile class
 						$tabs.find('.responsive-tabs__panel--closed-accordion-only').removeClass('responsive-tabs__panel--closed-accordion-only');
 

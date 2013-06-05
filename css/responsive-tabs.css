@@ -33,8 +33,6 @@
     clear: both;
 }
 
-.responsive-tabs__panel { margin-bottom: 50px;}
-
 @media (max-width: 767px) {
 	.responsive-tabs__heading { 
 		padding: 0.4em;

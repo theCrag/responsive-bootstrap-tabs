@@ -73,10 +73,11 @@ var RESPONSIVEUI = {};
 						tabindex: 0,
 						keydown: function (objEvent) {
 							if (objEvent.keyCode === 13) { // if user presses 'enter'
-								$tabListItem.click();
+								$tabListItem.mousedown();
 							}
 						},
-						click: function() {
+						mousedown: function(e) {
+							e.preventDefault();
 							//Show associated panel
 
 							//set height of tab container to highest panel height to avoid page jump
@@ -126,12 +127,13 @@ var RESPONSIVEUI = {};
 					// if user presses 'enter' on tab heading trigger the click event
 					$tabHeading.keydown(function(objEvent) {
 						if (objEvent.keyCode === 13) {
-							$tabHeading.click();
+							$tabHeading.mousedown();
 						}
 					});
 
 					//toggle tab panel if click heading (on mobile)
-					$tabHeading.click(function(e) {
+					$tabHeading.mousedown(function(e) {
+						e.preventDefault();
 						// remove any hidden mobile class
 						$tabs.find('.responsive-tabs__panel--closed-accordion-only').removeClass('responsive-tabs__panel--closed-accordion-only');
 

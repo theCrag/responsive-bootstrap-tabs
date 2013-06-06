@@ -21,7 +21,7 @@ var RESPONSIVEUI = {};
 				var $tabs = $(this);
 
 				// add tab heading and tab panel classes
-				$tabs.children(':header').addClass('responsive-tabs__heading').append('<i class="icon-arrow-down pull-right"></i>');
+				$tabs.children(':header').addClass('responsive-tabs__heading').append('<i class="icon-caret-right pull-right"></i>');
 				$tabs.children('div').addClass('responsive-tabs__panel');
 
 				// determine if markup already identifies the active tab panel for this set of tabs
